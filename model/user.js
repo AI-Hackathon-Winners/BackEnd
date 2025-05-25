@@ -1,11 +1,14 @@
 import { Schema, model } from "mongoose";
-import normalize from "normalize-mongoose"
+import { toJSON } from "@reis/mongoose-to-json";
 
 const userSchema = new Schema(
   {
-    username: { type: String, required: true, unique: true },
+    userName: { type: String, required: true, unique: true },
     email: { type: String, required: true, unique: true },
     password: { type: String, required: true },
+    role: {
+        type: String, default: "user", enum: ["adminstrator", "user"]
+    }
     
   },
   {
@@ -13,5 +16,7 @@ const userSchema = new Schema(
   }
 );
 
-userSchema.plugin(normalize);
+userSchema.plugin(toJSON);
+
+
 export const UserModel = model("User", userSchema);

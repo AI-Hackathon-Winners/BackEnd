@@ -1,14 +1,20 @@
 import Joi from "joi";
 
 export const registerUserValidator = Joi.object({
-  username: Joi.string().required(),
+  userName: Joi.string().required(),
   email: Joi.string().email().required(),
   password: Joi.string().required(),
-  confirmPassword: Joi.ref("password"),
-}).with("password", "confirmPassword");
+  role: Joi.string().valid("adminstrator", "user"),
+  // confirmPassword: Joi.ref("password"),
+});
 
 export const loginUserValidator = Joi.object({
-  username: Joi.string().optional(),
-  email: Joi.string().optional(),
+  email: Joi.string().email().required(),
   password: Joi.string().required(),
 });
+
+export const updateProfileValidator = Joi.object({
+    userName: Joi.string(),    
+    email: Joi.string().email(), 
+    password: Joi.string().min(6),
+})
