@@ -1,0 +1,20 @@
+import { Schema, model } from "mongoose";
+import mongoose from "mongoose";
+import { toJSON } from "@reis/mongoose-to-json";
+
+const leadSchema = new Schema({
+    leadName: { type: String, required: true },
+    email: { type: String, required: true, unique: true, lowercase: true },
+    phone: { type: String, required: true },
+    status: { type: String, default: 'new' },
+    notes: { type: String },
+    owner: { type: mongoose.Schema.Types.ObjectId, ref: 'User' },
+    updatedBy: { type: mongoose.Schema.Types.ObjectId, ref: 'User' }
+},
+    {
+        timestamps: true,
+    });
+leadSchema.plugin(toJSON);
+
+
+export const leadModel = model("Lead", leadSchema)
