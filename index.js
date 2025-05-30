@@ -3,7 +3,8 @@ import mongoose from "mongoose";
 import cors from "cors";
 import "dotenv/config";
 import userRouter from "./routes/user.js";
-import leadRouter from "./routes/lead.js"
+import leadRouter from "./routes/lead.js";
+import invoiceRouter from "./routes/invoice.js";
 
 // Connect to database
 await mongoose
@@ -19,7 +20,7 @@ app.use(express.json());
 app.use(cors());
 
 // Use routes
-app.use(userRouter, leadRouter);
+app.use(userRouter, leadRouter, invoiceRouter);
 
 // Listen for incoming requests
 app.listen(4000, () => {
