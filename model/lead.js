@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import { toJSON } from "@reis/mongoose-to-json";
 
 const leadSchema = new Schema({
-    fullName: { type: String, required: true },
+    leadName: { type: String, required: true },
     email: { type: String, required: true, unique: true, lowercase: true },
     phone: { type: String, required: true },
     status: { type: String, default: 'new' },

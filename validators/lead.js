@@ -6,7 +6,7 @@ export const leadValidator = Joi.object({
     phone: Joi.string().required(),
     status: Joi.string().required(),
     notes: Joi.string().required(),
-    // owner: Joi.string().required(),
+    leadSource: Joi.string().required(),
 });
 
 export const updateLeadValidator = Joi.object({
