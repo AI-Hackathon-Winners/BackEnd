@@ -1,14 +1,5 @@
+import { toJSON } from "@reis/mongoose-to-json";
 import { Schema, model } from "mongoose";
-import normalize from "normalize-mongoose";
-
-const itemSchema = new Schema(
-  {
-    description: { type: String, required: true },
-    quantity: { type: Number, required: true },
-    price: { type: Number, required: true },
-  },
-  { _id: false }
-);
 
 const invoiceSchema = new Schema(
   {
@@ -16,15 +7,18 @@ const invoiceSchema = new Schema(
     invoiceDate: { type: Date, required: true },
     recipient: { type: String, required: true },
     sender: { type: String, required: true },
-    items: { type: [itemSchema], required: true },
+    items: { type: String, required: true },
     total: { type: Number, required: true },
+    description: { type: String, required: true },
+    quantity: { type: Number, required: true },
+    price: { type: Number, required: true },
   },
   {
     timestamps: true,
   }
 );
 
-invoiceSchema.plugin(normalize);
+invoiceSchema.plugin(toJSON);
 
 export const InvoiceModel = model("Invoice", invoiceSchema);
 

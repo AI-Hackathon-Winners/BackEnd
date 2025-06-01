@@ -13,8 +13,6 @@ export const addInvoiceValidator = Joi.object({
         price: Joi.number().required(),
       })
     )
-
-    .required(),
 });
 
 // //validators for items with subtotal

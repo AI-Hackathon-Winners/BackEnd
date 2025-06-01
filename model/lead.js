@@ -1,7 +1,6 @@
 import { Schema, model } from "mongoose";
 import mongoose from "mongoose";
 import { toJSON } from "@reis/mongoose-to-json";
-import { required } from "joi";
 
 const leadSchema = new Schema({
     fullName: { type: String, required: true },
