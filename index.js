@@ -5,6 +5,7 @@ import "dotenv/config";
 import userRouter from "./routes/user.js";
 import leadRouter from "./routes/lead.js";
 import invoiceRouter from "./routes/invoice.js";
+import aiRouter from "./routes/ai.js";
 
 // Connect to database
 await mongoose
@@ -20,7 +21,7 @@ app.use(express.json());
 app.use(cors());
 
 // Use routes
-app.use(userRouter, leadRouter, invoiceRouter);
+app.use(userRouter, leadRouter, invoiceRouter, aiRouter);
 
 // Listen for incoming requests
 app.listen(4000, () => {
