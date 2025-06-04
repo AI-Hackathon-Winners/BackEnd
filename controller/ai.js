@@ -12,7 +12,7 @@ export const summarizeText = async (req, res, next) => {
       'https://api.cohere.ai/v1/chat',
       {
         message: `Summarize this: ${text}`,
-        model: 'command-r-plus', // or 'command-r'
+        model: 'command-r', // or 'command-r'
         temperature: 0.3,
         chat_history: []
       },
